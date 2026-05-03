@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify - Inscription</title>
+    <link rel="stylesheet" href="Dossier CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <a href="acceuil.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+                <h1><i class="fa-solid fa-shop"></i> Shopify</h1>
+                <h2>Inscription</h2>
+                <p>Créez votre compte en quelques secondes</p>
+            </div>
+
+            <div class="social-login">
+                <button type="button" class="social-btn google" onclick="alert('Connexion avec Google (démo)')">
+                    <i class="fa-brands fa-google"></i> Google
+                </button>
+                <button type="button" class="social-btn facebook" onclick="alert('Connexion avec Facebook (démo)')">
+                    <i class="fa-brands fa-facebook-f"></i> Facebook
+                </button>
+                <button type="button" class="social-btn apple" onclick="alert('Connexion avec Apple (démo)')">
+                    <i class="fa-brands fa-apple"></i> Apple
+                </button>
+            </div>
+
+            <div class="divider">
+                <span>ou</span>
+            </div>
+
+            <form id="registerForm">
+                <div class="row">
+                    <div class="input-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="nom" placeholder="Nom" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="prenom" placeholder="Prénom" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="tel" id="telephone" placeholder="Téléphone (optionnel)">
+                </div>
+
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+
+                <div class="row">
+                    <div class="input-group">
+                        <i class="fa-solid fa-calendar"></i>
+                        <input type="date" id="dateNaissance">
+                    </div>
+                    <div class="gender-group">
+                        <label><input type="radio" name="sexe" value="Homme"> Homme</label>
+                        <label><input type="radio" name="sexe" value="Femme"> Femme</label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" placeholder="Mot de passe (min 6 caractères)" required>
+                    <i class="fa-solid fa-eye-slash toggle-password" data-target="password"></i>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="confirmPassword" placeholder="Confirmer le mot de passe" required>
+                    <i class="fa-solid fa-eye-slash toggle-password" data-target="confirmPassword"></i>
+                </div>
+
+                <button type="submit" class="auth-btn">S'inscrire</button>
+
+                <p class="auth-footer">
+                    Déjà un compte ? <a href="connexion.html">Se connecter</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const input = document.getElementById(targetId);
+                if (input) {
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        this.classList.remove('fa-eye-slash');
+                        this.classList.add('fa-eye');
+                    } else {
+                        input.type = 'password';
+                        this.classList.remove('fa-eye');
+                        this.classList.add('fa-eye-slash');
+                    }
+                }
+            });
+        });
+
+        // Formulaire d'inscription
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.getElementById('registerForm');
+            
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const nom = document.getElementById('nom')?.value || '';
+                    const prenom = document.getElementById('prenom')?.value || '';
+                    const email = document.getElementById('email')?.value || '';
+                    const password = document.getElementById('password')?.value || '';
+                    const confirmPassword = document.getElementById('confirmPassword')?.value || '';
+                    
+                    if (!nom.trim()) {
+                        alert('Veuillez entrer votre nom');
+                        return;
+                    }
+                    
+                    if (!prenom.trim()) {
+                        alert('Veuillez entrer votre prénom');
+                        return;
+                    }
+                    
+                    if (!email.trim()) {
+                        alert('Veuillez entrer votre email');
+                        return;
+                    }
+                    
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Veuillez entrer un email valide');
+                        return;
+                    }
+                    
+                    if (!password) {
+                        alert('Veuillez entrer un mot de passe');
+                        return;
+                    }
+                    
+                    if (password.length < 6) {
+                        alert('Le mot de passe doit contenir au moins 6 caractères');
+                        return;
+                    }
+                    
+                    if (password !== confirmPassword) {
+                        alert('Les mots de passe ne correspondent pas !');
+                        return;
+                    }
+                    
+                    // Sauvegarde
+                    const userData = {
+                        nom: nom,
+                        prenom: prenom,
+                        email: email,
+                        dateInscription: new Date().toISOString()
+                    };
+                    localStorage.setItem('shopify_user', JSON.stringify(userData));
+                    
+                    alert(`Bienvenue ${prenom} ${nom} ! Votre compte a été créé avec succès.`);
+                    window.location.href = 'acceuil.html';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

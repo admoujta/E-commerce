@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Tagesschrift&display=swap');
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    font-family: "Tagesschrift", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+.Connexion{
+    text-align: center;
+}
+form{
+    background-color: white;
+    margin-top: 20px;
+    border: 4px double black;
+    padding: 40px 60px;
+    border-radius: 10px;
+    min-width: 300px;
+}
+form h1{
+    color: red;
+    text-align: center;
+}
+form .Reseaux-media{
+    margin-top: -10px;
+    display :flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+form .Reseaux-media p{
+    padding: 5px;
+    margin-left: 5px;
+    border: 1px solid #545454;
+    border-radius: 100%;
+    width: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+form p.chosse-email{
+    text-align: center;
+}
+form .inputs{
+    display: flex;
+    flex-direction: column;
+}
+form .inputs input[type="email"], input[type="password"],input[type="nom"], input[type="Prenom"],input[type="tel"], input[type="date"]{
+    padding: 15px;
+    border-radius: 5px;
+    background-color: white;
+}
+form .inputs input{
+    margin: 5px;
+}
+form label{
+    padding: 10px 5px;
+    border: 1px double black;
+    border: none;
+    border-radius: 10px;
+}
+form p.inscription{
+    font-size: 14px;
+}
+form p.inscription span{
+    color: red;
+}
+form .Connexion button[type="button"]{
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+    background-color: red;
+    outline: none;
+    cursor: pointer;
+}
+form p a{
+    text-decoration: none;
+    color: red;
+}
+form .Connexion a{
+    padding: 15px 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    color: white;
+    font-weight: bold;
+    background-color: red;
+    outline: none;
+    cursor: pointer;
+}
