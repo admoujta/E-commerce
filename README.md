@@ -161,10 +161,6 @@ E-commerce/
 ├── connexion.html
 ├── Inscription.html
 │
-├── assets/
-│   ├── profile.jpg
-│   └── profile-v2.jpg
-│
 └── README.md
 ```
 
@@ -235,8 +231,6 @@ Future versions could include:
 ## 👨‍💻 Author
 
 <div align="center">
-
-<img src="assets/profile-v2.jpg" width="220" alt="Adam Moujtahid" />
 
 ### Adam Moujtahid
 
