@@ -162,7 +162,8 @@ E-commerce/
 ├── Inscription.html
 │
 ├── assets/
-│   └── profile.jpg
+│   ├── profile.jpg
+│   └── profile-v2.jpg
 │
 └── README.md
 ```
@@ -235,7 +236,7 @@ Future versions could include:
 
 <div align="center">
 
-<img src="assets/profile.jpg" width="180" alt="Adam Moujtahid" />
+<img src="assets/profile-v2.jpg" width="220" alt="Adam Moujtahid" />
 
 ### Adam Moujtahid
 
